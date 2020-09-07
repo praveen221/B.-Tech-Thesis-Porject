@@ -1,0 +1,49 @@
+readme file for work vanet_simulation.cc 
+
+Work of B.Tech Thesis Project under Dr. Moumita Patra Dept. of CSE IIT Guwahati by Praveen Jangid Roll = 150101048.
+
+The folder code consists of:
+1) readme file
+2) mobility.tcl
+3) pictiures of the map used to generate mobility.tcl file
+4) vanet_simulation.cc file
+
+Mobility.tcl file is for node number 50 and map GS Road Guwahati which is also in the folder.
+
+
+Prerequisite. 
+Setup NS3 latest version 
+Setup Sumo and OSM Webwizard (Avoid using sudo apt install sumo, use cloning to avoid issues)
+Details of softwares used: 
+a) ns-3.29
+b) sumo 1.2.0 
+c) OSM - Open street Map (osmWebWizard.py)
+
+
+Steps to generate a custom mobility file of your choice 
+
+1) Set SUMO PATH according to the next step below. 
+2) open your bash file and add this path "export SUMO_HOME=/home/praveen/sumo/" NOTE : add path according to your home directory.
+3) goto tools file inside sump using cd sumo/tools
+4) open OSMWebWizard using python osmWebWizard.py
+5) use the following command to convert the genrated sumo file to .xml file "sumo -c osm.sumocfg --fcd-output trace.xml"
+6) use this command at trace.xml file to convert it into mobility file "python traceExporter.py -i 2019-08-18-20-47-08/trace.xml --ns2mobility-output=/home/praveen/mobility.tcl "
+
+NOTE : The code is already injected with a .tcl mobility file and probability (pcsmafactor) .3 which is best case.
+
+Steps to run the code
+1) Copy the code to the scracth folder of your ns3 directory
+2) goto line 374 of the code 
+3) add your custom file or change the home directory name and path to include the mobility file provided in the folder
+4) Keep the setting below same or change for analysing from line 377 to 379    
+		m_nMaxNodes = xx;  xx is the number of nodes when you will scroll down the mobility.tcl file 
+		m_TotalSimTime = 10.01;
+		m_nodeSpeed = 20;
+5) Change the name of data files generated according to your choice in lines 381 and 382.
+6) Goto line 389 and change pcsmafactor variable according to your choice between 0 to 1. It is already set to .3 by default which is best case.  
+6) Save the file.
+
+
+Go to Terminal
+
+use command ./waf --run scratch/vanet_simulation
