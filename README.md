@@ -1,0 +1,2 @@
+# B.-Tech-Thesis-Porject
+With traffic congestion becoming the major problem of our metropolitan cities around the world and never ending demand to commute at faster times day by day, our objective in this work is to make en effort and try to reduce the delay by bringing a little variation in the MAC of the VANETs. We are introducing the notion of a probability factor to make an effort towards reducing collisions and hence in turn increase the overall performance.
